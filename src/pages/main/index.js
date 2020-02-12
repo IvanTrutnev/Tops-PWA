@@ -75,7 +75,10 @@ function Main() {
 					</div>
 				</div>
 			)}
-			<button className='btn btn-lg btn-secondary logout-btn' onClick={() => setIsLogged(false)}>
+			<button
+				className='btn btn-lg btn-secondary logout-btn'
+				onClick={() => setIsLogged(false)}
+			>
 				Logout
 			</button>
 		</div>
