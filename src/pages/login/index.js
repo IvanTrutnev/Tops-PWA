@@ -32,7 +32,7 @@ const Login = (props) => {
 		[ isSuccessfulSubmit, setIsLogged ]
 	);
 
-	if (JSON.parse(isLoggedIn)) {
+	if (isLoggedIn && JSON.parse(isLoggedIn)) {
 		return <Redirect to='/main' />;
 	}
 
