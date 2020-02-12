@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import API from '../../services/api-service';
 import Spinner from '../../components/spinner';
+import useLocalStorage from '../../hooks/useLocalStorage';
+import { Redirect } from 'react-router-dom';
 
 import './main.css';
 
@@ -9,6 +11,7 @@ function Main() {
 	const [ endDate, setEndDate ] = useState('');
 	const [ data, setData ] = useState(null);
 	const [ isLoading, setIsLoading ] = useState(false);
+	const [ isLoggedIn, setIsLogged ] = useLocalStorage('isLogged');
 
 	const api = useCallback(new API(), []);
 
@@ -23,14 +26,18 @@ function Main() {
 		[ startDate, endDate, api, setData, setIsLoading ]
 	);
 
+	if (!JSON.parse(isLoggedIn)) {
+		return <Redirect to='/' />;
+	}
+
 	return (
 		<div className='App container'>
 			<div className='row form-group'>
 				<div className='col'>
-					<label>Start date</label>
+					<label className='form-label'>Start date</label>
 					<input
 						type='date'
-						className='form-control'
+						className='form-control form-control-lg'
 						onChange={(e) => setStartDate(e.target.value)}
 						palceholder='Select start date'
 					/>
@@ -38,10 +45,10 @@ function Main() {
 			</div>
 			<div className='row form-group'>
 				<div className='col'>
-					<label>End date</label>
+					<label className='form-label'>End date</label>
 					<input
 						type='date'
-						className='form-control'
+						className='form-control form-control-lg'
 						onChange={(e) => setEndDate(e.target.value)}
 						plcaholder='Select end date'
 					/>
@@ -68,6 +75,9 @@ function Main() {
 					</div>
 				</div>
 			)}
+			<button className='btn btn-lg btn-secondary logout-btn' onClick={() => setIsLogged(false)}>
+				Logout
+			</button>
 		</div>
 	);
 }

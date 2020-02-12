@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import userLocalStorage from '../../hooks/useLocalStorage';
+import useLocalStorage from '../../hooks/useLocalStorage';
 import { Redirect } from 'react-router-dom';
 import { useToasts } from 'react-toast-notifications';
 
@@ -11,7 +11,7 @@ const Login = (props) => {
 	const [ password, setPassword ] = useState('');
 
 	const [ isSuccessfulSubmit, setIsSuccessfulSubmit ] = useState(false);
-	const [ isLoggedIn, setIsLogged ] = userLocalStorage('isLogged');
+	const [ isLoggedIn, setIsLogged ] = useLocalStorage('isLogged');
 
 	const formSubmit = (e) => {
 		e.preventDefault();
@@ -32,7 +32,7 @@ const Login = (props) => {
 		[ isSuccessfulSubmit, setIsLogged ]
 	);
 
-	if (isLoggedIn) {
+	if (JSON.parse(isLoggedIn)) {
 		return <Redirect to='/main' />;
 	}
 

@@ -14,3 +14,14 @@
 .positive {
 	color: #83d083;
 }
+
+.logout-btn {
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+	width: 100%;
+}
+
+.form-label {
+	font-size: 16px;
+}
