@@ -7,20 +7,3 @@ hr {
 	color: #fff;
 	background-color: #fff;
 }
-
-.statistic {
-	margin-top: 40px;
-}
-
-.param-wrapper {
-	margin-top: 10px;
-	text-align: center;
-}
-
-.param-wrapper .param-name {
-	font-size: 14px;
-}
-
-.positive {
-	color: #83d083;
-}
